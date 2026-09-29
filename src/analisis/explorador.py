@@ -7,51 +7,128 @@ inconsistentes).
 
 from __future__ import annotations
 
-from src.excepciones import EtapaPendienteAlumno
+import json
+from pathlib import Path
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
 
+from src.excepciones import EtapaPendienteAlumno
 
 class ExploradorDatos:
     """Estadísticas y gráficos mínimos del laboratorio."""
 
+    def __init__(self, ruta_json: str = "data/json", directorio_salida: str = "data/graficos"):
+        self.ruta_json = Path(ruta_json)
+        self.directorio_salida = Path(directorio_salida)
+        self.directorio_salida.mkdir(parents=True, exist_ok=True)
+        
+        # Cargar todos los JSONs en una lista de diccionarios
+        self.noticias = []
+        for archivo in self.ruta_json.glob("*.json"):
+            with open(archivo, "r", encoding="utf-8") as f:
+                self.noticias.append(json.load(f))
+                
+        self.df = pd.DataFrame(self.noticias)
+
     def noticias_por_fuente(self) -> None:
-        # TODO(alumno): gráfico de barras con pandas + matplotlib.
-        raise EtapaPendienteAlumno(
-            modulo="src.analisis.explorador.ExploradorDatos.noticias_por_fuente",
-            pista="Cuente noticias por la columna fuente (urls.csv o JSON).",
-        )
+        if "fuente" not in self.df.columns:
+            return
+        
+        conteo = self.df["fuente"].value_counts()
+        plt.figure(figsize=(10, 6))
+        sns.barplot(x=conteo.index, y=conteo.values, palette="viridis")
+        plt.title("Cantidad de Noticias por Fuente")
+        plt.xlabel("Fuente")
+        plt.ylabel("Cantidad")
+        plt.xticks(rotation=45)
+        plt.tight_layout()
+        plt.savefig(self.directorio_salida / "noticias_por_fuente.png")
+        plt.close()
 
     def delitos_frecuentes(self) -> None:
-        # TODO(alumno): top 10 delitos a partir de data/json/*.json.
-        raise EtapaPendienteAlumno(
-            modulo="src.analisis.explorador.ExploradorDatos.delitos_frecuentes",
-            pista="Aplane la lista delitos de cada JSON y use value_counts().",
-        )
+        if "delitos" not in self.df.columns:
+            return
+            
+        # Aplanar la lista de delitos
+        todos_los_delitos = [delito for sublist in self.df["delitos"].dropna() for delito in sublist]
+        serie_delitos = pd.Series(todos_los_delitos).value_counts().head(10)
+        
+        plt.figure(figsize=(10, 6))
+        sns.barplot(y=serie_delitos.index, x=serie_delitos.values, palette="magma")
+        plt.title("Top 10 Delitos Más Frecuentes")
+        plt.xlabel("Frecuencia")
+        plt.ylabel("Delito")
+        plt.tight_layout()
+        plt.savefig(self.directorio_salida / "delitos_frecuentes.png")
+        plt.close()
 
     def lugares_frecuentes(self) -> None:
-        raise EtapaPendienteAlumno(
-            modulo="src.analisis.explorador.ExploradorDatos.lugares_frecuentes",
-            pista="Cuente menciones de comunas/regiones y grafique las más frecuentes.",
-        )
+        if "lugares" not in self.df.columns:
+            return
+            
+        todos_los_lugares = [lugar for sublist in self.df["lugares"].dropna() for lugar in sublist]
+        serie_lugares = pd.Series(todos_los_lugares).value_counts().head(10)
+        
+        plt.figure(figsize=(10, 6))
+        sns.barplot(y=serie_lugares.index, x=serie_lugares.values, palette="cubehelix")
+        plt.title("Top 10 Lugares con Mayor Mención")
+        plt.xlabel("Frecuencia")
+        plt.ylabel("Lugar")
+        plt.tight_layout()
+        plt.savefig(self.directorio_salida / "lugares_frecuentes.png")
+        plt.close()
 
     def campos_faltantes(self) -> None:
-        raise EtapaPendienteAlumno(
-            modulo="src.analisis.explorador.ExploradorDatos.campos_faltantes",
-            pista="Calcule el porcentaje de null/listas vacías por campo del JSON.",
-        )
+        campos_revisar = ["delitos", "personas", "organizaciones", "lugares", "objetos", "relaciones"]
+        faltantes = {}
+        
+        for campo in campos_revisar:
+            if campo in self.df.columns:
+                # Contamos como nulo si es None o si es una lista vacía
+                nulos = self.df[campo].apply(lambda x: x is None or (isinstance(x, list) and len(x) == 0)).sum()
+                faltantes[campo] = (nulos / len(self.df)) * 100
+                
+        serie_faltantes = pd.Series(faltantes)
+        
+        plt.figure(figsize=(10, 6))
+        sns.barplot(x=serie_faltantes.index, y=serie_faltantes.values, palette="Reds")
+        plt.title("Porcentaje de Campos Faltantes o Vacíos por Entidad (%)")
+        plt.xlabel("Campo del JSON")
+        plt.ylabel("Porcentaje Faltante (%)")
+        plt.tight_layout()
+        plt.savefig(self.directorio_salida / "campos_faltantes.png")
+        plt.close()
 
     def evolucion_temporal(self) -> None:
-        raise EtapaPendienteAlumno(
-            modulo="src.analisis.explorador.ExploradorDatos.evolucion_temporal",
-            pista="Si fecha_publicacion está disponible, grafique noticias por mes.",
-        )
+        if "fecha_publicacion" not in self.df.columns:
+            return
+            
+        df_temporal = self.df.copy()
+        df_temporal["fecha_publicacion"] = pd.to_datetime(df_temporal["fecha_publicacion"], errors='coerce')
+        df_temporal = df_temporal.dropna(subset=["fecha_publicacion"])
+        
+        conteo_mensual = df_temporal.groupby(df_temporal["fecha_publicacion"].dt.to_period("M")).size()
+        
+        plt.figure(figsize=(10, 6))
+        conteo_mensual.plot(kind="line", marker="o", color="b")
+        plt.title("Evolución Temporal de Noticias Publicadas")
+        plt.xlabel("Mes")
+        plt.ylabel("Cantidad de Noticias")
+        plt.grid(True)
+        plt.tight_layout()
+        plt.savefig(self.directorio_salida / "evolucion_temporal.png")
+        plt.close()
 
     def ejecutar(self) -> None:
         """Corre todas las visualizaciones pedidas en la guía."""
-        raise EtapaPendienteAlumno(
-            modulo="src.analisis.explorador.ExploradorDatos.ejecutar",
-            pista=(
-                "Implemente y llame a noticias_por_fuente, delitos_frecuentes, "
-                "lugares_frecuentes, campos_faltantes y evolucion_temporal. "
-                "Interprete cada gráfico en el informe."
-            ),
-        )
+        if self.df.empty:
+            print("No se encontraron archivos JSON para analizar.")
+            return
+            
+        self.noticias_por_fuente()
+        self.delitos_frecuentes()
+        self.lugares_frecuentes()
+        self.campos_faltantes()
+        self.evolucion_temporal()
+        print("Análisis completado. Los gráficos se han guardado en la carpeta data/graficos.")
