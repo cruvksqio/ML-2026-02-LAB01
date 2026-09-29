@@ -38,3 +38,7 @@ docs/
 # Sistema
 .DS_Store
 *.swp
+obsidian_vault/.obsidian/workspace.json
+obsidian_vault/.obsidian/core-plugins.json
+obsidian_vault/.obsidian/appearance.json
+obsidian_vault/.obsidian/app.json
