@@ -1,12 +1,4 @@
-"""Extractor Gemini: texto limpio → JSON del contrato del laboratorio.
-
-Implementación mínima y ejecutable. El laboratorio NO inventa datos:
-solo se extrae información explícita en la noticia, en JSON válido.
-
-TODO(alumno) — mejoras opcionales, el código ya corre sin ellas:
-- reintentos ante 429 / timeouts
-- recorte de textos muy largos antes del prompt
-"""
+"""Extractor Gemini: texto limpio → JSON del contrato del laboratorio."""
 
 from __future__ import annotations
 
@@ -33,14 +25,7 @@ class ExtractorLLM(ABC):
 
 
 class ExtractorGemini(ExtractorLLM):
-    """Extractor oficial del laboratorio (Gemini).
-
-    1. Carga GEMINI_API_KEY desde .env (nunca hardcodear la clave).
-    2. Usa el texto ya limpio en noticia.texto_limpio.
-    3. Llama al modelo (p. ej. gemini-2.0-flash) con construir_prompt().
-    4. Parsea JSON (quita fences markdown si el modelo los agrega).
-    5. Guarda data/json/{id_noticia}.json.
-    """
+    """Extractor oficial del laboratorio (Gemini)."""
 
     CAMPOS_OBLIGATORIOS = [
         "id_noticia",
@@ -83,26 +68,48 @@ class ExtractorGemini(ExtractorLLM):
         )
 
     def extraer(self, noticia: NoticiaFuente) -> dict:
+        ruta = self.dir_json / f"{noticia.id_noticia}.json"
+        
+        # Si ya se extrajo correctamente en una ejecución anterior, reutilizarlo
+        if ruta.exists():
+            print(f"    [Saltado] {noticia.id_noticia}.json ya existe.")
+            return json.loads(ruta.read_text(encoding="utf-8"))
+
         if not GEMINI_API_KEY:
             raise RuntimeError(
-                "Falta GEMINI_API_KEY. Copie .env.example a .env y complete la clave. "
-                "Nunca suba .env a GitHub."
+                "Falta GEMINI_API_KEY. Copie .env.example a .env y complete la clave."
             )
         cliente = self._obtener_cliente()
         from google.genai import types
 
-        # TODO(alumno): recortar textos muy largos; reintentos ante 429 / timeouts.
-        respuesta = cliente.models.generate_content(
-            model=GEMINI_MODEL,
-            contents=self.construir_prompt(noticia),
-            config=types.GenerateContentConfig(
-                automatic_function_calling=types.AutomaticFunctionCallingConfig(
-                    disable=True
-                ),
-                response_mime_type="application/json",
-                temperature=0,
-            ),
-        )
+        # Aumentamos reintentos y tiempo de espera para superar el error 503
+        max_reintentos = 5
+        respuesta = None
+        for intento in range(max_reintentos):
+            try:
+                respuesta = cliente.models.generate_content(
+                    model=GEMINI_MODEL,
+                    contents=self.construir_prompt(noticia),
+                    config=types.GenerateContentConfig(
+                        automatic_function_calling=types.AutomaticFunctionCallingConfig(
+                            disable=True
+                        ),
+                        response_mime_type="application/json",
+                        temperature=0,
+                    ),
+                )
+                break
+            except Exception as exc:
+                es_error_temporal = any(
+                    err in str(exc) for err in ["429", "503", "RESOURCE_EXHAUSTED", "UNAVAILABLE"]
+                )
+                if es_error_temporal and intento < max_reintentos - 1:
+                    tiempo_espera = (intento + 1) * 15
+                    print(f"\n    [Aviso] Saturación en el servidor (503). Esperando {tiempo_espera}s...")
+                    time.sleep(tiempo_espera)
+                else:
+                    raise exc
+
         bruto = (getattr(respuesta, "text", None) or "").strip()
         if not bruto:
             raise ValueError(
@@ -114,14 +121,14 @@ class ExtractorGemini(ExtractorLLM):
             data["fuente"] = noticia.fuente
         if not data.get("url"):
             data["url"] = noticia.url
-        ruta = self.dir_json / f"{noticia.id_noticia}.json"
+
         ruta.write_text(
             json.dumps(data, ensure_ascii=False, indent=2) + "\n",
             encoding="utf-8",
         )
-        time.sleep(PAUSA_ENTRE_REQUESTS)
+        time.sleep(PAUSA_ENTRE_REQUESTS + 2)
         return data
-
+    
     def _obtener_cliente(self):
         if self._cliente is None:
             from google import genai
@@ -145,3 +152,4 @@ class ExtractorGemini(ExtractorLLM):
         if not isinstance(data, dict):
             raise ValueError("La respuesta de Gemini no es un objeto JSON.")
         return data
+    

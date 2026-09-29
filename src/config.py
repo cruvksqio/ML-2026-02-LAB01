@@ -27,7 +27,7 @@ USER_AGENT = (
     "+https://www.ucn.cl; MachineLearning-LAB01)"
 )
 TIMEOUT_HTTP = 20
-PAUSA_ENTRE_REQUESTS = 1.5
+PAUSA_ENTRE_REQUESTS = 4.0
 
 # RSS de Google News restringido a Chile / español latinoamericano.
 GOOGLE_NEWS_RSS = "https://news.google.com/rss/search"
@@ -41,4 +41,4 @@ COLUMNAS_URLS = ["id_noticia", "fuente", "url", "categoria_busqueda"]
 
 # Gemini: la clave vive en .env (nunca en el código ni en Git).
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY", "").strip()
-GEMINI_MODEL = os.getenv("GEMINI_MODEL", "gemini-2.0-flash").strip() or "gemini-2.0-flash"
+GEMINI_MODEL = os.getenv("GEMINI_MODEL", "gemini-3.8-flash").strip() or "gemini-3.8-flash"

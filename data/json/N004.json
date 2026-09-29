@@ -1,0 +1,53 @@
+{
+  "id_noticia": "N004",
+  "titulo": "Cayó narcobanda en Maipú y Recoleta: ocultaban la mercancía en la rueda de repuesto de un taxi",
+  "fecha_publicacion": "Domingo, 30 de Agosto de 2026 a las 13:53hrs.",
+  "fuente": "Cooperativa",
+  "url": "https://www.cooperativa.cl/noticias/pais/policial/drogas/cayo-narcobanda-en-maipu-y-recoleta-ocultaban-la-mercancia-en-la-rueda/2026-08-30/133248.html",
+  "resumen": "El equipo MT-0 de la Policía de Investigaciones desarticuló una banda en Maipú y Recoleta que transportaba droga oculta en la rueda de repuesto de un taxi, logrando la detención de cuatro personas y el decomiso de cinco kilos de marihuana.",
+  "delitos": [
+    "tráfico de drogas"
+  ],
+  "personas": [],
+  "organizaciones": [
+    "PDI",
+    "equipo MT-0",
+    "Policía de Investigaciones"
+  ],
+  "lugares": [
+    "Maipú",
+    "Recoleta"
+  ],
+  "objetos": [
+    {
+      "tipo": "droga",
+      "nombre": "marihuana",
+      "cantidad": 5,
+      "unidad": "kilos"
+    },
+    {
+      "tipo": "vehículo",
+      "nombre": "taxi",
+      "cantidad": 1,
+      "unidad": null
+    },
+    {
+      "tipo": "autoparte",
+      "nombre": "rueda de repuesto",
+      "cantidad": 1,
+      "unidad": null
+    }
+  ],
+  "relaciones": [
+    {
+      "origen": "equipo MT-0",
+      "tipo": "decomisó",
+      "destino": "marihuana"
+    },
+    {
+      "origen": "marihuana",
+      "tipo": "ocultada en",
+      "destino": "rueda de repuesto"
+    }
+  ]
+}

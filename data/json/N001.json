@@ -1,0 +1,82 @@
+{
+  "id_noticia": "N001",
+  "titulo": "Investigan asesinato en San Ramón: hombre muere tras ataque a tiros en población La Bandera",
+  "fecha_publicacion": "2026-09-01",
+  "fuente": "BioBioChile",
+  "url": "https://www.biobiochile.cl/noticias/nacional/region-metropolitana/2026/09/01/investigan-asesinato-en-san-ramon-hombre-muere-tras-ataque-a-tiros-en-poblacion-la-bandera.shtml",
+  "resumen": "Un hombre de 45 años murió tras ser atacado con disparos de arma de fuego en la población La Bandera, comuna de San Ramón. El hecho es investigado por la Brigada de Homicidios de la PDI y la Fiscalía Metropolitana Sur, contemplando entre las hipótesis un eventual intento de robo.",
+  "delitos": [
+    "asesinato",
+    "robo"
+  ],
+  "personas": [
+    {
+      "nombre": "Manuel Urrutia",
+      "rol": "comisario"
+    },
+    {
+      "nombre": "José Manuel Mac-Namara",
+      "rol": "fiscal"
+    },
+    {
+      "nombre": null,
+      "rol": "víctima"
+    },
+    {
+      "nombre": null,
+      "rol": "testigo presencial"
+    }
+  ],
+  "organizaciones": [
+    "Fiscalía Metropolitana Sur",
+    "Brigada de Homicidios de la PDI",
+    "PDI"
+  ],
+  "lugares": [
+    "San Ramón",
+    "población La Bandera",
+    "calles Riquelme con avenida Almirante Latorre"
+  ],
+  "objetos": [
+    {
+      "tipo": "arma",
+      "nombre": "arma de fuego",
+      "cantidad": null,
+      "unidad": null
+    },
+    {
+      "tipo": "proyectil",
+      "nombre": "disparos",
+      "cantidad": 6,
+      "unidad": "disparos"
+    },
+    {
+      "tipo": "pertenencia",
+      "nombre": "pertenencias",
+      "cantidad": null,
+      "unidad": null
+    }
+  ],
+  "relaciones": [
+    {
+      "origen": "Manuel Urrutia",
+      "tipo": "pertenece_a",
+      "destino": "Brigada de Homicidios de la PDI"
+    },
+    {
+      "origen": "José Manuel Mac-Namara",
+      "tipo": "pertenece_a",
+      "destino": "Fiscalía Metropolitana Sur"
+    },
+    {
+      "origen": "Brigada de Homicidios de la PDI",
+      "tipo": "investiga",
+      "destino": "asesinato"
+    },
+    {
+      "origen": "Fiscalía Metropolitana Sur",
+      "tipo": "investiga",
+      "destino": "asesinato"
+    }
+  ]
+}
