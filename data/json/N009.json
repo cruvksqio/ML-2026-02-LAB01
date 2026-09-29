@@ -1,0 +1,62 @@
+{
+  "id_noticia": "N009",
+  "titulo": "Más de dos kilos de droga incautada en allanamientos simultáneos en Isla de Maipo",
+  "fecha_publicacion": "Sabado, 5 de Septiembre de  2026 a las 11:37hrs.",
+  "fuente": "Cooperativa",
+  "url": "https://www.cooperativa.cl/noticias/pais/policial/drogas/mas-de-dos-kilos-de-droga-incautada-en-allanamientos-simultaneos-en-isla/2026-09-05/103258.html",
+  "resumen": "En allanamientos simultáneos realizados en los sectores de San Antonio y Montegrande en Isla de Maipo, un sujeto con prontuario policial fue detenido tras la incautación de más de dos kilos de droga, correspondiente a cocaína, marihuana, hongos alucinógenos, MDMA y pastillas de éxtasis.",
+  "delitos": [
+    "drogas"
+  ],
+  "personas": [
+    {
+      "nombre": null,
+      "rol": "detenido"
+    }
+  ],
+  "organizaciones": [],
+  "lugares": [
+    "Isla de Maipo",
+    "San Antonio",
+    "Montegrande"
+  ],
+  "objetos": [
+    {
+      "tipo": "droga",
+      "nombre": "droga",
+      "cantidad": 2,
+      "unidad": "kilos"
+    },
+    {
+      "tipo": "droga",
+      "nombre": "cocaína",
+      "cantidad": null,
+      "unidad": null
+    },
+    {
+      "tipo": "droga",
+      "nombre": "marihuana",
+      "cantidad": null,
+      "unidad": null
+    },
+    {
+      "tipo": "droga",
+      "nombre": "hongos alucinógenos",
+      "cantidad": null,
+      "unidad": null
+    },
+    {
+      "tipo": "droga",
+      "nombre": "MDMA",
+      "cantidad": null,
+      "unidad": null
+    },
+    {
+      "tipo": "droga",
+      "nombre": "pastillas de éxtasis",
+      "cantidad": null,
+      "unidad": null
+    }
+  ],
+  "relaciones": []
+}

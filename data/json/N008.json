@@ -1,0 +1,82 @@
+{
+  "id_noticia": "N008",
+  "titulo": "Familia de adulta mayor asesinada en Coronel piden que padres de imputados enfrenten a la justicia",
+  "fecha_publicacion": "2026-09-13",
+  "fuente": "BioBioChile",
+  "url": "https://www.biobiochile.cl/noticias/nacional/region-del-bio-bio/2026/09/13/familia-de-adulta-mayor-asesinada-en-coronel-piden-que-padres-de-imputados-enfrenten-a-la-justicia.shtml",
+  "resumen": "La familia de Isabel Contreras Aguilera, víctima de robo con homicidio en la casona Maule de Coronel, pide que los padres de los menores imputados enfrenten a la justicia por presunto encubrimiento o complicidad tras el crimen.",
+  "delitos": [
+    "robo con homicidio",
+    "encubrimiento"
+  ],
+  "personas": [
+    {
+      "nombre": "Isabel Contreras Aguilera",
+      "rol": "víctima"
+    }
+  ],
+  "organizaciones": [
+    {
+      "nombre": "Radio Bío Bío"
+    },
+    {
+      "nombre": "Corte"
+    },
+    {
+      "nombre": "Gobierno"
+    }
+  ],
+  "lugares": [
+    {
+      "nombre": "casona Maule"
+    },
+    {
+      "nombre": "Coronel"
+    },
+    {
+      "nombre": "región del Bío Bío"
+    }
+  ],
+  "objetos": [
+    {
+      "tipo": "dinero",
+      "nombre": "dinero robado",
+      "cantidad": null,
+      "unidad": null
+    },
+    {
+      "tipo": "bebida",
+      "nombre": "alcohol",
+      "cantidad": null,
+      "unidad": null
+    },
+    {
+      "tipo": "vehículo",
+      "nombre": "vehículo de su madre",
+      "cantidad": 1,
+      "unidad": null
+    }
+  ],
+  "relaciones": [
+    {
+      "origen": "Isabel Contreras Aguilera",
+      "tipo": "víctima de",
+      "destino": "robo con homicidio"
+    },
+    {
+      "origen": "robo con homicidio",
+      "tipo": "ocurrido en",
+      "destino": "casona Maule"
+    },
+    {
+      "origen": "casona Maule",
+      "tipo": "ubicado en",
+      "destino": "Coronel"
+    },
+    {
+      "origen": "Coronel",
+      "tipo": "ubicado en",
+      "destino": "región del Bío Bío"
+    }
+  ]
+}

@@ -1,0 +1,75 @@
+{
+  "id_noticia": "N005",
+  "titulo": "Hombre muere acribillado en La Serena: desconocidos llegaron en auto a robar a inmueble donde estaba",
+  "fecha_publicacion": "2026-09-08",
+  "fuente": "BioBioChile",
+  "url": "https://www.biobiochile.cl/noticias/nacional/region-de-coquimbo/2026/09/08/hombre-muere-acribillado-en-la-serena-desconocidos-llegaron-en-auto-a-robar-a-inmueble-donde-estaba.shtml",
+  "resumen": "Un hombre falleció en el Hospital de La Serena tras ser acribillado en la Caleta San Pedro, en la región de Coquimbo. El ataque ocurrió luego de que varias personas llegaran en un vehículo a un inmueble para sustraer diversas especies. La Fiscalía y la PDI investigan la dinámica del hecho.",
+  "delitos": [
+    "homicidio",
+    "robo"
+  ],
+  "personas": [
+    {
+      "nombre": "Freddy Salinas",
+      "rol": "Fiscal del equipo ECOH"
+    },
+    {
+      "nombre": null,
+      "rol": "víctima"
+    }
+  ],
+  "organizaciones": [
+    "BioBioChile",
+    "Diario El Día",
+    "PDI",
+    "Brigada de Homicidios",
+    "Laboratorio de Criminalística",
+    "Fiscalía",
+    "Equipo ECOH",
+    "Hospital de La Serena"
+  ],
+  "lugares": [
+    "Caleta San Pedro",
+    "La Serena",
+    "Región de Coquimbo",
+    "Hospital de La Serena"
+  ],
+  "objetos": [
+    {
+      "tipo": "vehículo",
+      "nombre": "automóvil",
+      "cantidad": 1,
+      "unidad": null
+    },
+    {
+      "tipo": "bienes",
+      "nombre": "diversas especies",
+      "cantidad": null,
+      "unidad": null
+    },
+    {
+      "tipo": "tecnología",
+      "nombre": "cámaras de seguridad",
+      "cantidad": null,
+      "unidad": null
+    }
+  ],
+  "relaciones": [
+    {
+      "origen": "Freddy Salinas",
+      "tipo": "fiscal de",
+      "destino": "Equipo ECOH"
+    },
+    {
+      "origen": "Brigada de Homicidios",
+      "tipo": "pertenece a",
+      "destino": "PDI"
+    },
+    {
+      "origen": "Equipo ECOH",
+      "tipo": "pertenece a",
+      "destino": "Fiscalía"
+    }
+  ]
+}
