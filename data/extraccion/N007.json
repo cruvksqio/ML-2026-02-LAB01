@@ -1,0 +1,57 @@
+{
+  "id_noticia": "N007",
+  "titulo": "La Tercera - Noticias de Chile y el Mundo",
+  "fecha_publicacion": null,
+  "fuente": "LaTercera",
+  "url": "https://www.latercera.com/nacional/noticia/carabineros-incauta-armamento-de-guerra-y-detiene-a-tres-personas-en-operativo-en-santiago-centro/",
+  "resumen": "Compendio de titulares y notas de prensa que incluye hechos delictuales como la incautación de casi 700 kilos de droga por parte de la Fiscalía Regional de Antofagasta y el OS-7 de Carabineros, la muerte del cabo segundo Cristopher Aguilera en Lo Espejo, y la condena judicial por fraude en Maipú a una falsa periodista ligada a Cathy Barriga.",
+  "delitos": [
+    "tráfico de drogas",
+    "fraude",
+    "cuasidelito de homicidio"
+  ],
+  "personas": [
+    {
+      "nombre": "Cristopher Aguilera",
+      "rol": "cabo segundo de Carabineros fallecido"
+    },
+    {
+      "nombre": "Cathy Barriga",
+      "rol": null
+    }
+  ],
+  "organizaciones": [
+    "Carabineros",
+    "OS-7 de Carabineros",
+    "Fiscalía Regional de Antofagasta",
+    "TOP de Punta Arenas",
+    "FACH",
+    "Corte de Santiago"
+  ],
+  "lugares": [
+    "Lo Espejo",
+    "Antofagasta",
+    "Maipú",
+    "Punta Arenas"
+  ],
+  "objetos": [
+    {
+      "tipo": "droga",
+      "nombre": "droga",
+      "cantidad": 700,
+      "unidad": "kilos"
+    }
+  ],
+  "relaciones": [
+    {
+      "origen": "OS-7 de Carabineros",
+      "tipo": "incauta",
+      "destino": "droga"
+    },
+    {
+      "origen": "Fiscalía Regional de Antofagasta",
+      "tipo": "incauta",
+      "destino": "droga"
+    }
+  ]
+}

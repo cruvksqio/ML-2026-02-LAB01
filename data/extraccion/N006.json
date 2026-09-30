@@ -1,0 +1,60 @@
+{
+  "id_noticia": "N006",
+  "titulo": "Hombre fue asesinado en Pudahuel: Investigan quitada de droga",
+  "fecha_publicacion": "Martes, 15 de Septiembre de 2026 a las 07:31hrs.",
+  "fuente": "Cooperativa",
+  "url": "https://www.cooperativa.cl/noticias/pais/policial/homicidios/hombre-fue-asesinado-en-pudahuel-investigan-quitada-de-droga/2026-09-15/073207.html",
+  "resumen": "Un hombre fue asesinado tras permitir el ingreso de tres sospechosos a un edificio en Pudahuel, quienes posteriormente le dispararon. El hecho es investigado como una presunta quitada de droga.",
+  "delitos": [
+    "homicidio",
+    "quitada de droga"
+  ],
+  "personas": [
+    {
+      "nombre": "hombre",
+      "rol": "víctima"
+    },
+    {
+      "nombre": "tres sospechosos",
+      "rol": "sospechoso"
+    }
+  ],
+  "organizaciones": [
+    {
+      "nombre": "Redacción Cooperativa"
+    },
+    {
+      "nombre": "@ECOH_FiscaliaRM"
+    },
+    {
+      "nombre": "Google"
+    },
+    {
+      "nombre": "Whatsapp"
+    }
+  ],
+  "lugares": [
+    "Pudahuel",
+    "edificio"
+  ],
+  "objetos": [
+    {
+      "tipo": "droga",
+      "nombre": "droga",
+      "cantidad": null,
+      "unidad": null
+    }
+  ],
+  "relaciones": [
+    {
+      "origen": "víctima",
+      "tipo": "hizo ingresar a",
+      "destino": "tres sospechosos"
+    },
+    {
+      "origen": "tres sospechosos",
+      "tipo": "dispararon a",
+      "destino": "víctima"
+    }
+  ]
+}

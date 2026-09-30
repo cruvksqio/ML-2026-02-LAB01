@@ -1,0 +1,85 @@
+{
+  "id_noticia": "N003",
+  "titulo": null,
+  "fecha_publicacion": null,
+  "fuente": "LaTercera",
+  "url": "https://www.latercera.com/nacional/noticia/pdi-detuvo-a-dos-colombianos-por-el-crimen-el-presunto-ajuste-de-cuentas-narco-detras-de-horroroso-homicidio-en-curacavi/",
+  "resumen": "La PDI detuvo a dos ciudadanos colombianos por su presunta autoría en el secuestro, homicidio calificado, tortura, desmembramiento e incineración de una persona en Curacaví, en el marco de un aparente ajuste de cuentas vinculado al narcotráfico.",
+  "delitos": [
+    "homicidio",
+    "homicidio calificado",
+    "tortura",
+    "tráfico de droga"
+  ],
+  "personas": [
+    {
+      "nombre": "Walt Dapremont",
+      "rol": "subprefecto, jefe subrogante de la Brigada de Homicidios Metropolitana de la PDI"
+    },
+    {
+      "nombre": "Ernesto Navarro",
+      "rol": "fiscal ECOH"
+    },
+    {
+      "nombre": "No identificado",
+      "rol": "víctima"
+    }
+  ],
+  "organizaciones": [
+    "Policía de Investigaciones",
+    "Brigada de Homicidios Metropolitana",
+    "Fiscalía Equipo de Crimen Organizado y Homicidios (ECOH)",
+    "Ministerio Público",
+    "seguridad municipal"
+  ],
+  "lugares": [
+    "Curacaví",
+    "Chile",
+    "Colombia",
+    "Región Metropolitana",
+    "Callejón La Aurora"
+  ],
+  "objetos": [
+    {
+      "tipo": "vehículo",
+      "nombre": "vehículo",
+      "cantidad": 1,
+      "unidad": "unidad"
+    },
+    {
+      "tipo": "combustible",
+      "nombre": "combustible",
+      "cantidad": null,
+      "unidad": null
+    },
+    {
+      "tipo": "dispositivo de seguridad",
+      "nombre": "cámaras de seguridad",
+      "cantidad": 50,
+      "unidad": "unidades"
+    },
+    {
+      "tipo": "recipiente",
+      "nombre": "canastos plásticos",
+      "cantidad": 2,
+      "unidad": "unidades"
+    }
+  ],
+  "relaciones": [
+    {
+      "origen": "Walt Dapremont",
+      "tipo": "jefe subrogante de",
+      "destino": "Brigada de Homicidios Metropolitana"
+    },
+    {
+      "origen": "Brigada de Homicidios Metropolitana",
+      "tipo": "pertenece a",
+      "destino": "Policía de Investigaciones"
+    },
+    {
+      "origen": "Ernesto Navarro",
+      "tipo": "fiscal de",
+      "destino": "Fiscalía Equipo de Crimen Organizado y Homicidios (ECOH)"
+    }
+  ]
+}
